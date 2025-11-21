@@ -19,6 +19,10 @@ include $(BASE_DIR)/../tools/make/viv_sim_preamble.mak
 #-------------------------------------------------
 # Design Specific
 #-------------------------------------------------
+# Define part using PART_ID (<device>/<package>/<speedgrade>)
+ARCH = zynquplusRFSOC
+PART_ID = xczu28dr/ffvg1517/-2/e
+
 # Include makefiles and sources for the DUT and its
 # dependencies.
 include $(BASE_DIR)/../lib/rfnoc/core/Makefile.srcs
