@@ -37,6 +37,23 @@ $(RFNOC_BLOCK_DEMODCHEST_SRCS)  \
 )
 
 #-------------------------------------------------
+# IP Specific
+#-------------------------------------------------
+# If simulation contains IP, define the IP_DIR and point it to the base level
+# IP directory.
+IP_DIR = $(BASE_DIR)/x400/ip
+LIB_IP_DIR = $(BASE_DIR)/../lib/ip
+
+# Include makefiles and sources for all IP components *after* defining the
+# LIB_IP_DIR.
+include $(IP_DIR)/Demodulat_ip_0/Makefile.inc
+
+DESIGN_SRCS += $(abspath \
+$(LIB_IP_DEMODULAT_IP_0_SRCS) \
+)
+
+
+#-------------------------------------------------
 # Testbench Specific
 #-------------------------------------------------
 SIM_TOP = rfnoc_block_demodchest_tb
