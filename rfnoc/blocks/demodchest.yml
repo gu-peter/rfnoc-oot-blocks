@@ -70,4 +70,9 @@ data:
 
 fpga_includes:
   - include: "fpga/oot-blocks/rfnoc_block_demodchest/Makefile.srcs"
-    make_var: "$(RFNOC_BLOCK_OOT-BLOCKS_SRCS)"
+    make_var: "$(RFNOC_BLOCK_DEMODCHEST_SRCS)"
+    # Because this block requires external IP, we also list that here.
+  - include: "fpga/oot-blocks/ip/Demodulat_ip_0/Makefile.inc"
+    # Like above, this is the Make variable that lists the sources for the IP
+    # we require here.
+    make_var: "$(LIB_IP_DEMODULAT_IP_0_SRCS)"
