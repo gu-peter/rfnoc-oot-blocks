@@ -23,6 +23,10 @@ include $(BASE_DIR)/../tools/make/viv_sim_preamble.mak
 ARCH = zynquplusRFSOC
 PART_ID = xczu28dr/ffvg1517/-2/e
 
+# Out-of-tree IP
+OOT_FPGA_DIR = $(dir $(abspath $(firstword $(MAKEFILE_LIST))))/../
+include $(OOT_FPGA_DIR)/ip/Demodulat_ip_0/Makefile.inc
+
 # Include makefiles and sources for the DUT and its
 # dependencies.
 include $(BASE_DIR)/../lib/rfnoc/core/Makefile.srcs
@@ -34,6 +38,7 @@ $(RFNOC_SRCS)      \
 $(RFNOC_CORE_SRCS) \
 $(RFNOC_UTIL_SRCS) \
 $(RFNOC_BLOCK_DEMODCHEST_SRCS)  \
+$(LIB_IP_DEMODULAT_IP_0_SRCS) \
 )
 
 #-------------------------------------------------
@@ -41,14 +46,14 @@ $(RFNOC_BLOCK_DEMODCHEST_SRCS)  \
 #-------------------------------------------------
 # If simulation contains IP, define the IP_DIR and point it to the base level
 # IP directory.
-IP_DIR = $(BASE_DIR)/x400/ip
-LIB_IP_DIR = $(BASE_DIR)/../lib/ip
+#IP_DIR = 	$(BASE_DIR)/x400/ip
+#LIB_IP_DIR = $(BASE_DIR)/../lib/ip
 
 # Include makefiles and sources for all IP components *after* defining the
 # LIB_IP_DIR.
-include $(IP_DIR)/Demodulat_ip_0/Makefile.inc
+#include $(IP_DIR)/Demodulat_ip_0/Makefile.inc
 
-DESIGN_SRCS += $(abspath \
+#DESIGN_SRCS += $(abspath \
 $(LIB_IP_DEMODULAT_IP_0_SRCS) \
 )
 
