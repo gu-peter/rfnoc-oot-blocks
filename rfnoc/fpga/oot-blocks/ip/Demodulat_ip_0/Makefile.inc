@@ -22,5 +22,6 @@ $(LIB_IP_DEMODULAT_IP_0_SRCS) $(LIB_IP_DEMODULAT_IP_0_OUTS): LIB_IP_DEMODULAT_IP
 # This include provides BUILD_VIVADO_IP
 include $(TOOLS_DIR)/make/viv_ip_builder.mak
 
-LIB_IP_DEMODULAT_IP_0_TRGT: $(THIS_IP_DIR)/Demodulat_ip_0.xci
-	$(call BUILD_VIVADO_IP,Demodulat_ip_0,$(ARCH),$(PART_ID),$(THIS_IP_DIR)/..,$(IP_BUILD_DIR),0)
+LIB_IP_DEMODULAT_IP_0_TRGT: $(THIS_IP_DIR)Demodulat_ip_0/Demodulat_ip_0.xci
+	@echo "Building Demodulat_ip_0"
+	$(call BUILD_VIVADO_IP,Demodulat_ip_0,$(ARCH),$(PART_ID),$(THIS_IP_DIR),$(IP_BUILD_DIR),0)

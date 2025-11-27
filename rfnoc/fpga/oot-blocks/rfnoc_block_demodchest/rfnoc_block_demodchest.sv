@@ -70,7 +70,7 @@ module rfnoc_block_demodchest #(
   wire               m_ctrlport_resp_ack;
   wire [31:0]        m_ctrlport_resp_data;
   // Data Stream to User Logic: in
-  wire [unknown*1-1:0]    m_in_axis_tdata;
+  wire [32*1-1:0]    m_in_axis_tdata;
   wire [1-1:0]       m_in_axis_tkeep;
   wire               m_in_axis_tlast;
   wire               m_in_axis_tvalid;

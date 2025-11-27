@@ -20,8 +20,8 @@ include $(BASE_DIR)/../tools/make/viv_sim_preamble.mak
 # Design Specific
 #-------------------------------------------------
 # Define part using PART_ID (<device>/<package>/<speedgrade>)
-ARCH = zynquplusRFSOC
-PART_ID = xczu28dr/ffvg1517/-2/e
+#ARCH = zynquplusRFSOC
+#PART_ID = xczu28dr/ffvg1517/-2/e
 
 # Out-of-tree IP
 OOT_FPGA_DIR = $(dir $(abspath $(firstword $(MAKEFILE_LIST))))/../

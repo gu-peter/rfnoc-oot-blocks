@@ -14,3 +14,4 @@ install(
 
 add_subdirectory(rfnoc_block_aurora)
 add_subdirectory(rfnoc_block_demodchest)
+add_subdirectory(ip/Demodulat_ip_0)
