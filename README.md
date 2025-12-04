@@ -8,11 +8,15 @@ Output of this block: sc16
 
 ## Prerequisites
 Clone Demodulat_ip_0 from Matlab Simulink:
+```sh
 git clone https://github.com/gu-peter/ip_core_simulink
+```
 
 Clone the official UHD 
+```sh
 git clone https://github.com/EttusResearch/uhd
 git switch UHD-4.9
+```
 
 Go to uhd/fpga/usrp3/tools/scripts/viv_utils.tcl and add these lines of code:
 ```
@@ -39,7 +43,7 @@ set_property  ip_repo_paths  <your path to git repos>/ip_core_simulink [current_
 
 ## Image building process
 Go back to this repository, and execute the following commands:
-```bash
+```sh
 mkdir build
 ch build
 cmake -DUHD_FPGA_DIR=<your path to git repos>/uhd/fpga/ ../
