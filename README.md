@@ -45,7 +45,7 @@ set_property  ip_repo_paths  <your path to git repos>/ip_core_simulink [current_
 Go back to this repository, and execute the following commands:
 ```sh
 mkdir build
-ch build
+cd build
 cmake -DUHD_FPGA_DIR=<your path to git repos>/uhd/fpga/ ../
 make -j64
 sudo make install
