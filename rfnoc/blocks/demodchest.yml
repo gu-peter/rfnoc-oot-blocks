@@ -55,7 +55,7 @@ data:
       nipc: 1
       info_fifo_depth: 32
       payload_fifo_depth: 32
-      format: sc32
+      format: sc16
   outputs:
     # This will generate one or more ports all called 'out'. It is also
     # possible to have multiple ports with different names.

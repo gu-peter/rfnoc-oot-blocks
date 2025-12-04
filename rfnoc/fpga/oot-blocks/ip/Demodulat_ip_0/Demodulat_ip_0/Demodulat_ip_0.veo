@@ -58,7 +58,7 @@ Demodulat_ip_0 your_instance_name (
   .IPCORE_CLK(IPCORE_CLK),                      // input wire IPCORE_CLK
   .IPCORE_RESETN(IPCORE_RESETN),                // input wire IPCORE_RESETN
   .AXIS_A_Master_TREADY(AXIS_A_Master_TREADY),  // input wire AXIS_A_Master_TREADY
-  .AXIS_A_Slave_TDATA(AXIS_A_Slave_TDATA),      // input wire [63 : 0] AXIS_A_Slave_TDATA
+  .AXIS_A_Slave_TDATA(AXIS_A_Slave_TDATA),      // input wire [31 : 0] AXIS_A_Slave_TDATA
   .AXIS_A_Slave_TVALID(AXIS_A_Slave_TVALID),    // input wire AXIS_A_Slave_TVALID
   .AXIS_A_Master_TDATA(AXIS_A_Master_TDATA),    // output wire [31 : 0] AXIS_A_Master_TDATA
   .AXIS_A_Master_TVALID(AXIS_A_Master_TVALID),  // output wire AXIS_A_Master_TVALID
