@@ -1,17 +1,42 @@
-# RFNoC OOT Blocks: Official Ettus Research Out Of Tree (OOT) RFNoC blocks
+# RFNoC OOT Block Demodulat_ip_0: Adapted from https://github.com/EttusResearch/rfnoc-oot-blocks
+This repository contains the OOT module Demodulat_ip_0, a module for OFDM demodulation and channel estimation at the receiver side for the USRP X440.
+Demodulat_ip_0 has been generated via Matlab Simulink 2023b. All examples use UHD 4.9.
 
-This is an out-of-tree (OOT) module for RFNoC blocks. Out-of-tree means that
-these RFNoC blocks are maintained outside of the [uhd](https://github.com/EttusResearch/uhd)
-repository. The uhd repository contains the core RFNoC blocks which are
-required for the default FPGA bitfiles which are published as part of the
-UHD releases.
+## Prerequisites
+Clone Demodulat_ip_0 from Matlab Simulink:
+git clone https://github.com/gu-peter/ip_core_simulink
 
-In this repository we maintain RFNoC blocks which further extend the functionality
-of RFNoC-capable USRPs.
+Clone the official UHD 
+git clone https://github.com/EttusResearch/uhd
+git switch UHD-4.9
 
-This repository is maintained by Ettus Research, a National Instruments (NI) Brand.
-NI is now part of Emerson.
+Go to uhd/fpga/usrp3/tools/scripts/viv_utils.tcl and add these lines of code:
+```
+if {...
+} else {
+    puts "BUILDER: Creating Vivado project in memory for part $g_part_name"
+    create_project -in_memory -part $g_part_name
+}
+# include user IP repository, add this section!
+    puts "Adding user IP repo"
+    set_property ip_repo_paths *your path to git repos*/ip_core_simulink [current_project]
+    update_ip_catalog
+    report_ip_status
+# Expand directories to include their contents (needed for HLS outputs)
+foreach src_file $g_source_files {
+    ...
+    }
+}
+```
 
+Go back to this repository, and execute the following commands:
+```bash
+mkdir build
+ch build
+cmake -DUHD_FPGA_DIR=<where you stored uhd>/uhd/fpga/ ../
+make -j64
+sudo make install
+```
 ## RFNoC Blocks
 
 The following RFNoC blocks are contained in this repository:
