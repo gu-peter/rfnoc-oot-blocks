@@ -1,9 +1,10 @@
 import uhd
 import numpy as np
+import matplotlib.pyplot as plt
 
 usrp = uhd.usrp.MultiUSRP("addr=10.157.161.243")
 
-num_samps = 10000 # number of samples received
+num_samps = 10000000 # number of samples received
 center_freq = 1e9 # Hz
 sample_rate = 368.64e6 # Hz
 gain = 0 # dB
@@ -17,7 +18,8 @@ st_args = uhd.usrp.StreamArgs("fc32", "sc16")
 st_args.channels = [0]
 metadata = uhd.types.RXMetadata()
 streamer = usrp.get_rx_stream(st_args)
-recv_buffer = np.zeros((1, 1000), dtype=np.complex64)
+bf_sz= 10000000
+recv_buffer = np.zeros((1, bf_sz), dtype=np.complex64)
 # recv_buffer_max = streamer.get_max_num_samps()
 
 # Start Stream
@@ -27,9 +29,9 @@ streamer.issue_stream_cmd(stream_cmd)
 
 # Receive Samples
 samples = np.zeros(num_samps, dtype=np.complex64)
-for i in range(num_samps//1000):
+for i in range(num_samps//bf_sz):
     streamer.recv(recv_buffer, metadata)
-    samples[i*1000:(i+1)*1000] = recv_buffer[0]
+    samples[i*bf_sz:(i+1)*bf_sz] = recv_buffer[0]
 
 # Stop Stream
 stream_cmd = uhd.types.StreamCMD(uhd.types.StreamMode.stop_cont)
@@ -37,3 +39,6 @@ streamer.issue_stream_cmd(stream_cmd)
 
 print(len(samples))
 print(samples[0:10])
+plt.figure()
+plt.plot(np.abs(samples))
+plt.savefig('samples.png')
