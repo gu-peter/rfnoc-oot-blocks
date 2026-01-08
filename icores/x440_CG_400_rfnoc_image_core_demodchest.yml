@@ -6,7 +6,7 @@ copyright: >-                            # Copyright information used in file he
 license: >-                              # License information used in file headers
   SPDX-License-Identifier: LGPL-3.0-or-later
 version: '1.0'                           # File version
-chdr_width: 64                          # Bit width of the CHDR bus for this image
+chdr_width: 512                          # Bit width of the CHDR bus for this image
 device: 'x440'                           # USRP type
 image_core_name: 'usrp_x440_fpga_CG_400_FFT_demodchest' # Name to use for the generated output files
 default_target: 'X440'                   # Default make target
